@@ -2,98 +2,112 @@
  <head>
   <title>7.2 Release Timetable</title>
   <style>
-.release {
-  border: solid 1px black;
-  margin-bottom: 0.5em;
-  margin-right: 0.5em;
-  display: inline-block;
+#body {
+  color: #000;
+  background-color: #FFF;
 }
-.alpha { background-color: #F88; }
-.fork  { background-color: #F00; }
-.beta  { background-color: #F80; }
-.rc    { background-color: #FF0; }
-.final { background-color: #0F0; }
-.label { font-weight: bold; }
+#releases-header tr th {
+  border-bottom: solid 1px black;
+  padding-bottom: 0.1em;
+}
+#releases tr td {
+  padding-bottom: 0.1em;
+  padding-top: 0.1em;
+}
+.alpha { background-color: #FDD; }
+.beta  { background-color: #FD8; }
+.rc    { background-color: #FF8; }
+.final { background-color: #8F8; }
   </style>
  </head>
  <body>
-  <div id="releases"><span class="label">Releases:</span><br/></div>
+  <div>
+   <span class="label">Releases: (releases without links are planned/future releases and are aproximate dates)</span><br/>
+   <table>
+    <thead id="releases-header"><tr>
+     <th>Version</th>
+     <th>Date</th>
+     <th>GitRef</th>
+     <th>Tarball</th>
+    </tr></thead>
+    <tbody id="releases"></tbody>
+   </table>
+  </div>
 
   <script>
-function row(name, value, cls = null) {
-  if (name !== null) {
-    var lbl = document.createElement("span");
-    lbl.className = "label";
-    lbl.appendChild(document.createTextNode(name + ": "));
-  }
-  var val = document.createElement("span");
-  val.className = "value";
-  val.appendChild(document.createTextNode(value));
+function appendRelease(version, dt, git = null, url = null) {
+  td = function (txt) {
+    var td = document.createElement("td");
+    td.appendChild(document.createTextNode(txt));
+    return td;
+  };
 
-  var div = document.createElement("div");
-  if (cls !== null) div.className = cls;
-  if (name !== null) div.appendChild(lbl);
-  div.appendChild(val);
+  var row = document.createElement("tr");
+  row.appendChild(td(version));
+  row.appendChild(td(dt.toDateString()));
 
-  return div;
-}
-
-function appendRelease(version, dt) {
-  var release = document.createElement("div");
-
-  var cls = "final";
-  if (/\d-(alpha|beta|rc|final)/g.exec(version) !== null) {
-    cls = (/\d-(alpha|beta|rc|final)/g.exec(version))[1];
+  if (git === null) {
+    row.appendChild(td(" "));
+  } else {
+    var cell = document.createElement("td");
+    var link = document.createElement("a");
+    link.href = "https://github.com/php/php-src/tree/" + git;
+    link.innerHTML = git.substring(0, 10);
+    cell.appendChild(link);
+    row.appendChild(cell);
   }
 
-  release.className = "release " + cls;
-  release.appendChild(row("Version", version));
-  release.appendChild(row("Date", dt.toString()));
+  if (url === null) {
+    row.appendChild(td(" "));
+  } else {
+    tarball = function(typ) {
+      var cell = document.createElement("td");
 
-  var countdown = row("Countdown", "");
-  release.appendChild(countdown);
-  var interval = setInterval(function() {
-    var txt = countdown.lastChild;
-    txt.innerHTML = "";
-    var diff = (dt.getTime() - Date.now()) / 1000;
-    if (diff < 0) {
-      txt.innerHTML = "&#x1F389;";
-      clearInterval(interval);
-      return;
-    }
-    if (diff >= 86400) {
-      txt.innerHTML += Math.floor(diff / 86400) + "d ";
-      diff = diff % 86400;
-    }
-    if (diff >= 3600) {
-      txt.innerHTML += Math.floor(diff / 3600) + "h ";
-      diff = diff % 3600;
-    }
-    if (diff >= 60) {
-      txt.innerHTML += Math.floor(diff / 60) + "m ";
-      diff = diff % 60;
-    }
-    if (diff > 0) {
-      txt.innerHTML += Math.floor(diff) + "s";
-    }
-  }, 1000);
+      var link = document.createElement("a");
+      link.href = url + "." + typ;
+      link.innerHTML = typ;
+      cell.appendChild(link);
 
-  document.getElementById("releases").appendChild(release);
+      cell.appendChild(document.createTextNode(" ("));
+      var link = document.createElement("a");
+      link.href = url + "." + typ + ".asc";
+      link.innerHTML = "sig";
+      cell.appendChild(link);
+      cell.appendChild(document.createTextNode(") "));
+
+      return cell;
+    };
+    var links = document.createElement("td");
+    links.appendChild(tarball("gz"));
+    links.appendChild(tarball("bz2"));
+    links.appendChild(tarball("xz"));
+    row.appendChild(links);
+  }
+
+  var cls = null;
+  if (/\d-(alpha|beta|rc)/g.exec(version) !== null) {
+    cls = (/\d-(alpha|beta|rc)/g.exec(version))[1];
+  }
+  if (cls !== null) {
+    row.className += " " + cls;
+  }
+
+  document.getElementById("releases").appendChild(row);
 }
 
-appendRelease("7.2.0-alpha1", new Date("2017-06-08"));
-appendRelease("7.2.0-alpha2", new Date("2017-06-22"));
-appendRelease("7.2.0-alpha3", new Date("2017-07-06"));
-appendRelease("7.2.0-beta1", new Date("2017-07-20"));
-appendRelease("7.2.0-beta2", new Date("2017-08-03"));
-appendRelease("7.2.0-beta3", new Date("2017-08-17"));
-appendRelease("7.2.0-rc1", new Date("2017-08-31"));
-appendRelease("7.2.0-rc2", new Date("2017-09-14"));
-appendRelease("7.2.0-rc3", new Date("2017-09-28"));
-appendRelease("7.2.0-rc4", new Date("2017-10-12"));
-appendRelease("7.2.0-rc5", new Date("2017-10-26"));
-appendRelease("7.2.0-rc6", new Date("2017-11-09"));
-appendRelease("7.2.0-final", new Date("2017-11-30"));
+appendRelease("7.2.0-alpha1", new Date("2017-06-08 16:00"));
+appendRelease("7.2.0-alpha2", new Date("2017-06-22 16:00"));
+appendRelease("7.2.0-alpha3", new Date("2017-07-06 16:00"));
+appendRelease("7.2.0-beta1", new Date("2017-07-20 16:00"));
+appendRelease("7.2.0-beta2", new Date("2017-08-03 16:00"));
+appendRelease("7.2.0-beta3", new Date("2017-08-17 16:00"));
+appendRelease("7.2.0-rc1", new Date("2017-08-31 16:00"));
+appendRelease("7.2.0-rc2", new Date("2017-09-14 16:00"));
+appendRelease("7.2.0-rc3", new Date("2017-09-28 16:00"));
+appendRelease("7.2.0-rc4", new Date("2017-10-12 16:00"));
+appendRelease("7.2.0-rc5", new Date("2017-10-26 16:00"));
+appendRelease("7.2.0-rc6", new Date("2017-11-09 16:00"));
+appendRelease("7.2.0-final", new Date("2017-11-30 16:00"));
   </script>
  </body>
 </html>
