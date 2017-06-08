@@ -1,0 +1,67 @@
+.release {
+    border: solid 1px black;
+    margin-bottom: 0.5em;
+    margin-right: 0.5em;
+    display: inline-block;
+}
+
+.alpha {
+    background-color: #F88;
+}
+
+.fork {
+    background-color: #F00;
+}
+
+.beta {
+    background-color: #F80;
+}
+
+.rc {
+    background-color: #FF0;
+}
+
+.final {
+    background-color: #0F0;
+}
+
+.gitref::before {
+    font-weight: bold;
+    content: "GitRef: ";
+}
+
+.tarball::before {
+    font-weight: bold;
+    content: "Tarball: ";
+}
+
+dt {
+    float: left;
+    clear: left;
+    width: 100px;
+    text-align: right;
+    font-weight: bold;
+    color: black;
+}
+
+dt::after {
+    content: ":";
+}
+
+dd {
+    margin: 0 0 0 110px;
+    padding: 0 0 0.5em 0;
+}
+
+h1, h2 {
+    font-weight: bold;
+    font-family: "sans-serif";
+}
+
+h1, h1+p {
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: -.5em;
+}

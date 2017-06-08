@@ -1,113 +1,26 @@
+<!DOCTYPE html>
 <html>
- <head>
-  <title>7.2 Release Timetable</title>
-  <style>
-#body {
-  color: #000;
-  background-color: #FFF;
-}
-#releases-header tr th {
-  border-bottom: solid 1px black;
-  padding-bottom: 0.1em;
-}
-#releases tr td {
-  padding-bottom: 0.1em;
-  padding-top: 0.1em;
-}
-.alpha { background-color: #FDD; }
-.beta  { background-color: #FD8; }
-.rc    { background-color: #FF8; }
-.final { background-color: #8F8; }
-  </style>
- </head>
- <body>
-  <div>
-   <span class="label">Releases: (releases without links are planned/future releases and are aproximate dates)</span><br/>
-   <table>
-    <thead id="releases-header"><tr>
-     <th>Version</th>
-     <th>Date</th>
-     <th>GitRef</th>
-     <th>Tarball</th>
-    </tr></thead>
-    <tbody id="releases"></tbody>
-   </table>
-  </div>
 
-  <script>
-function appendRelease(version, dt, git = null, url = null) {
-  td = function (txt) {
-    var td = document.createElement("td");
-    td.appendChild(document.createTextNode(txt));
-    return td;
-  };
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>7.2 Release Timetable</title>
+</head>
 
-  var row = document.createElement("tr");
-  row.appendChild(td(version));
-  row.appendChild(td(dt.toDateString()));
+<body>
+    <h1>7.2 Release Timetable</h1>
+    <p>(releases without links are planned/future releases and are aproximate dates)</p>
+    <h2>Alpha Release</h2>
+    <dl class="alpha release"></dl>
+    <h2>Beta Release</h2>
+    <dl class="beta release"></dl>
+    <h2>Release Candidate</h2>
+    <dl class="rc release"></dl>
+    <h2>Final Release</h2>
+    <dl class="final release"></dl>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="7.2.script.js"></script>
+</body>
 
-  if (git === null) {
-    row.appendChild(td(" "));
-  } else {
-    var cell = document.createElement("td");
-    var link = document.createElement("a");
-    link.href = "https://github.com/php/php-src/tree/" + git;
-    link.innerHTML = git.substring(0, 10);
-    cell.appendChild(link);
-    row.appendChild(cell);
-  }
-
-  if (url === null) {
-    row.appendChild(td(" "));
-  } else {
-    tarball = function(typ) {
-      var cell = document.createElement("td");
-
-      var link = document.createElement("a");
-      link.href = url + "." + typ;
-      link.innerHTML = typ;
-      cell.appendChild(link);
-
-      cell.appendChild(document.createTextNode(" ("));
-      var link = document.createElement("a");
-      link.href = url + "." + typ + ".asc";
-      link.innerHTML = "sig";
-      cell.appendChild(link);
-      cell.appendChild(document.createTextNode(") "));
-
-      return cell;
-    };
-    var links = document.createElement("td");
-    links.appendChild(tarball("gz"));
-    links.appendChild(tarball("bz2"));
-    links.appendChild(tarball("xz"));
-    row.appendChild(links);
-  }
-
-  var cls = null;
-  if (/\d-(alpha|beta|rc)/g.exec(version) !== null) {
-    cls = (/\d-(alpha|beta|rc)/g.exec(version))[1];
-  }
-  if (cls !== null) {
-    row.className += " " + cls;
-  }
-
-  document.getElementById("releases").appendChild(row);
-}
-
-appendRelease("7.2.0-alpha1", new Date("2017-06-08 16:00"));
-appendRelease("7.2.0-alpha2", new Date("2017-06-22 16:00"));
-appendRelease("7.2.0-alpha3", new Date("2017-07-06 16:00"));
-appendRelease("7.2.0-beta1", new Date("2017-07-20 16:00"));
-appendRelease("7.2.0-beta2", new Date("2017-08-03 16:00"));
-appendRelease("7.2.0-beta3", new Date("2017-08-17 16:00"));
-appendRelease("7.2.0-rc1", new Date("2017-08-31 16:00"));
-appendRelease("7.2.0-rc2", new Date("2017-09-14 16:00"));
-appendRelease("7.2.0-rc3", new Date("2017-09-28 16:00"));
-appendRelease("7.2.0-rc4", new Date("2017-10-12 16:00"));
-appendRelease("7.2.0-rc5", new Date("2017-10-26 16:00"));
-appendRelease("7.2.0-rc6", new Date("2017-11-09 16:00"));
-appendRelease("7.2.0-final", new Date("2017-11-30 16:00"));
-  </script>
- </body>
 </html>
