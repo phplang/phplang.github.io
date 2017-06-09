@@ -40,6 +40,11 @@
     content: "Download: ";
 }
 
+.winBinary::before {
+    font-weight: bold;
+    content: "Windows Binaries: ";
+}
+
 dt {
     float: left;
     clear: left;
