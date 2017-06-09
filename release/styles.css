@@ -25,14 +25,19 @@
     background-color: #0F0;
 }
 
-.gitref::before {
+.announce::before {
     font-weight: bold;
-    content: "GitRef: ";
+    content: "Internals Announcement: ";
 }
 
-.tarball::before {
+.gitTag::before {
     font-weight: bold;
-    content: "Tarball: ";
+    content: "Git Tag: ";
+}
+
+.download::before {
+    font-weight: bold;
+    content: "Download: ";
 }
 
 dt {
