@@ -10,11 +10,11 @@ var releases = [{
     {
         "type": "alpha",
         "name": "7.2.0-alpha2",
-        "releaseDate": "2017-06-22 12:00 -0400",
-        "announce": "",
-        "gitTag": "",
-        "download": "",
-        "winBinary": "",
+        "releaseDate": "2017-06-22 7:17:15 -0400",
+        "announce": "http://news.php.net/php.internals/99610",
+        "gitTag": "https://github.com/php/php-src/tree/php-7.2.0alpha1",
+        "download": "https://downloads.php.net/~pollita/",
+        "winBinary": "http://windows.php.net/qa/",
     },
     {
         "type": "alpha",
