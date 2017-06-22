@@ -1,7 +1,7 @@
 var releases = [{
         "type": "alpha",
         "name": "7.2.0-alpha1",
-        "releaseDate": "2017-06-08 6:21:03 -0400",
+        "releaseDate": "2017-06-08 7:21:03 -0400",
         "announce": "http://news.php.net/php.internals/99452",
         "gitTag": "https://github.com/php/php-src/tree/php-7.2.0alpha1",
         "download": "https://downloads.php.net/~pollita/",
