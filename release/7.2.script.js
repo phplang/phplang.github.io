@@ -1,7 +1,7 @@
 var releases = [{
         "type": "alpha",
         "name": "7.2.0-alpha1",
-        "releaseDate": "2017-06-08 7:21:03 -0400",
+        "releaseDate": "2017-06-08 06:21:03 -0500",
         "announce": "http://news.php.net/php.internals/99452",
         "gitTag": "https://github.com/php/php-src/tree/php-7.2.0alpha1",
         "download": "https://downloads.php.net/~pollita/",
@@ -10,7 +10,7 @@ var releases = [{
     {
         "type": "alpha",
         "name": "7.2.0-alpha2",
-        "releaseDate": "2017-06-22 7:17:15 -0400",
+        "releaseDate": "2017-06-22 05:17:15 -0500",
         "announce": "http://news.php.net/php.internals/99610",
         "gitTag": "https://github.com/php/php-src/tree/php-7.2.0alpha2",
         "download": "https://downloads.php.net/~pollita/",
