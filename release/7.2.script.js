@@ -46,11 +46,11 @@ var releases = [{
     {
         "type": "beta",
         "name": "7.2.0-beta3",
-        "releaseDate": "2017-08-17 12:00 -0400",
-        "announce": "",
-        "gitTag": "",
-        "download": "",
-        "winBinary": "",
+        "releaseDate": "2017-08-17 10:27:14 +0000",
+        "announce": "http://news.php.net/php.internals/100243",
+        "gitTag": "https://github.com/php/php-src/tree/php-7.2.0beta3",
+        "download": "https://downloads.php.net/~remi/",
+        "winBinary": "http://windows.php.net/qa/",
     },
     {
         "type": "rc",
