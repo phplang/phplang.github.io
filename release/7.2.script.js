@@ -55,11 +55,11 @@ var releases = [{
     {
         "type": "rc",
         "name": "7.2.0-rc1",
-        "releaseDate": "2017-08-31 12:00 -0400",
-        "announce": "",
-        "gitTag": "",
-        "download": "",
-        "winBinary": "",
+        "releaseDate": "2017-08-31 11:07:15 +0000",
+        "announce": "http://news.php.net/php.internals/100333",
+        "gitTag": "https://github.com/php/php-src/tree/php-7.2.0RC1",
+        "download": "https://downloads.php.net/~remi/",
+        "winBinary": "http://windows.php.net/qa/",
     },
     {
         "type": "rc",
