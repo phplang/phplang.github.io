@@ -64,11 +64,11 @@ var releases = [{
     {
         "type": "rc",
         "name": "7.2.0-rc2",
-        "releaseDate": "2017-09-14 12:00 -0400",
-        "announce": "",
-        "gitTag": "",
-        "download": "",
-        "winBinary": "",
+        "releaseDate": "2017-09-14 16:14:45 +0000",
+        "announce": "http://news.php.net/php.internals/100599",
+        "gitTag": "https://github.com/php/php-src/tree/php-7.2.0RC2",
+        "download": "https://downloads.php.net/~pollita/",
+        "winBinary": "http://windows.php.net/qa/",
     },
     {
         "type": "rc",
