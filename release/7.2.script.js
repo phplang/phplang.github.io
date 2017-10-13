@@ -82,11 +82,11 @@ var releases = [{
     {
         "type": "rc",
         "name": "7.2.0-rc4",
-        "releaseDate": "2017-10-12 12:00 -0400",
-        "announce": "",
-        "gitTag": "",
-        "download": "",
-        "winBinary": "",
+        "releaseDate": "2017-10-12 10:12:42 +0000",
+        "announce": "http://news.php.net/php.internals/100867",
+        "gitTag": "https://github.com/php/php-src/tree/php-7.2.0RC4",
+        "download": "https://downloads.php.net/~remi/",
+        "winBinary": "http://windows.php.net/qa/",
     },
     {
         "type": "rc",
