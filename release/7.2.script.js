@@ -93,9 +93,9 @@ var releases = [{
         "name": "7.2.0-rc5",
         "releaseDate": "2017-10-26 12:00 -0400",
         "announce": "",
-        "gitTag": "",
-        "download": "",
-        "winBinary": "",
+        "gitTag": "https://github.com/php/php-src/tree/php-7.2.0RC5",
+        "download": "https://downloads.php.net/~pollita/",
+        "winBinary": "http://windows.php.net/qa/",
     },
     {
         "type": "rc",
