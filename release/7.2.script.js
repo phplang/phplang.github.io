@@ -130,5 +130,5 @@ var releases = [{
             ).append((element.winBinary) ? $('<dd>').attr('class', 'winBinary').append('<a href="' + element.winBinary + '">' + element.winBinary + '</a>') : ''
         );
     });
-})();
+}());
 
